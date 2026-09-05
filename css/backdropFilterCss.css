@@ -1,0 +1,96 @@
+/* ========================================
+   自定义样式 - 内容区半透明 + 毛玻璃效果
+   ======================================== */
+
+/* ---------- 浅色模式 ---------- */
+
+/* 文章主内容卡片 */
+#content-inner .layout > div:first-child,
+.post,
+#page,
+#archive,
+#tag,
+#category {
+  background: rgba(251, 246, 236, 0.75) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+}
+
+/* 侧边栏所有卡片 */
+.aside-content .card-widget {
+  background: rgba(251, 246, 236, 0.7) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+}
+
+/* 导航栏半透明 */
+#nav {
+  background: rgba(251, 246, 236, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* 页脚半透明 */
+#footer {
+  background: rgba(251, 246, 236, 0.7) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---------- 深色模式适配 ---------- */
+
+[data-theme="dark"] #content-inner .layout > div:first-child,
+[data-theme="dark"] .post,
+[data-theme="dark"] #page,
+[data-theme="dark"] #archive,
+[data-theme="dark"] #tag,
+[data-theme="dark"] #category {
+  background: rgba(42, 36, 25, 0.75) !important;
+}
+
+[data-theme="dark"] .aside-content .card-widget {
+  background: rgba(42, 36, 25, 0.7) !important;
+}
+
+[data-theme="dark"] #nav {
+  background: rgba(42, 36, 25, 0.85) !important;
+}
+
+[data-theme="dark"] #footer {
+  background: rgba(42, 36, 25, 0.7) !important;
+}
+
+/* ========================================
+   仅目录(TOC)粘性跟随 - 其他侧边栏组件正常滚动
+   ======================================== */
+
+#aside-content .card-widget.card-toc {
+  position: sticky;
+  top: 80px;          /* 距顶部距离，避开导航栏 */
+  align-self: flex-start;  /* 关键！防止 flex 拉伸导致 sticky 失效 */
+  max-height: calc(100vh - 100px);  /* 目录太长时允许内部滚动 */
+  overflow-y: auto;
+}
+
+/* 目录内部滚动条美化 */
+#aside-content .card-widget.card-toc::-webkit-scrollbar {
+  width: 4px;
+}
+
+#aside-content .card-widget.card-toc::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 106, 0.5);
+  border-radius: 4px;
+}
+
+#aside-content .card-widget.card-toc::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 移动端取消粘性（避免碍事） */
+@media screen and (max-width: 768px) {
+  #aside-content .card-widget.card-toc {
+    position: static;
+  }
+}
